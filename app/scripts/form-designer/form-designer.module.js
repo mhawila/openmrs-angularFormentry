@@ -3,7 +3,7 @@
 
   angular
     .module('app.formDesigner', [
-
+      'openmrs.RestServices'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/');

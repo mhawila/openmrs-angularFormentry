@@ -1,3 +1,21 @@
+<div class="breadcrumb">
+  <h3>FORM EDITOR</h3>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <h4 class="panel-title">
+              OpenMRS Server Configurations
+          </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+              <server-url-config></server-url-config>
+          </div>
+      </div>
+  </div>
+</div>    
+
 <div class="panel panel-info" style="padding:4px;">
   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
@@ -11,11 +29,6 @@
         </span>
     </div>
   </div>
-
-  <div class="breadcrumb">
-    <h3>FORM EDITOR</h3>
-  </div>
-
 
   <select ng-model="vm.selectedForm">
     <option ng-repeat="option in vm.existingForms" value="{{option}}">{{option}}</option>

@@ -57,17 +57,17 @@ jscs:disable disallowMixedSpacesAndTabs, requireDotNotation, requirePaddingNewLi
     });
 })();
 
-/*jscs:disable disallowMixedSpacesAndTabs, requireDotNotation, requirePaddingNewLinesBeforeLineComments, requireTrailingComma*/
-(function() {
-  'use strict';
-
-  angular
-        .module('openmrs.RestServices', [
-            'ngResource',
-            'openmrs-ngresource.models',
-            'openmrs-ngresource.restServices'
-        ]);
-})();
+// /*jscs:disable disallowMixedSpacesAndTabs, requireDotNotation, requirePaddingNewLinesBeforeLineComments, requireTrailingComma*/
+// (function() {
+//   'use strict';
+// 
+//   angular
+//         .module('openmrs.RestServices', [
+//             'ngResource',
+//             'openmrs-ngresource.models',
+//             'openmrs-ngresource.restServices'
+//         ]);
+// })();
 
 /*
  jshint -W098, -W003, -W068, -W004, -W033, -W030, -W117, -W069, -W106, -W026
