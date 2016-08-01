@@ -1,0 +1,70 @@
+<div class="breadcrumb">
+  <h3>OpenMRS Form Manamegement Tool</h3>
+  <p>Lets you do all cool stuff, but you will need access to openmrs backend.
+  If you just want to play with forms, go to Form Editor</p>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <h4 class="panel-title">
+              OpenMRS Server Configurations
+          </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+              <server-url-config></server-url-config>
+          </div>
+      </div>
+  </div>
+</div>   
+ 
+<div class="panel panel-info" style="padding:4px;" data-ng-if="!vm.errorFetchingForms && !vm.busy">
+  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <div class="panel panel-danger" data-ng-show="vm.errors.length>0">
+    <div><h3 style="margin-left:4px; margin-top: 0px" class="text-danger">LIST OF FIELDS WITH ERRORS</h3></div>
+    <div style="margin-left:4px; margin-top: 0px" data-ng-repeat="e in vm.errors" data-ng-show="vm.errors.length>0">
+      <span class="text-primary"><i class="glyphicon glyphicon-zoom-in"></i> {{e.id}} </span>
+      <br/>
+        <span >
+          {{e.error}}
+        </span>
+    </div>
+  </div>
+  
+  <div class="table-responsive">
+  <input ng-model="vm.query" id="search" class="form-control" placeholder="Filter"/>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr><th>Name</th><th>Version</th><th>Published</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="form in vm.existingForms | filter:vm.query" data-ng-click="setSelected(form);">
+        <td>
+          {{form.name}}<br/>
+          <input type="file" file-model="form.schema"/>
+          <button class="btn btn-primary" ng-disable="form.schema == null" 
+            ng-show="!form.published" ng-click="uploadSchema(form);">
+            {{form.schemaAction}}
+          </button>
+        </td>
+        <td>{{form.version}}</td>
+        <td>
+          <span class="label label-{{form.publishedCssClass}}">{{form.publishedText}}</span>
+        </td>
+        <td><button class="btn btn-primary" data-ng-click="render(form);">Render</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <pagination
+    ng-model="vm.currentPage"
+    total-items="vm.existingForms.length"
+    max-size="vm.maxSize"
+    boundary-links="true">
+  </pagination> -->
+  </div>
+</div>
+
+<div ng-disabled="!vm.authenticated">
+  <button class="btn btn-default" ng-click="createForm();">Create Form</button>
+</div>
